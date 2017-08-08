@@ -1,0 +1,20 @@
+<nav class="navbar-default navabar-fixed-top">
+  <div class="container">
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <!--Router link active to show active page/link-->
+        <li routerLinkActive= "active" [routerLinkActiveOptions]= "{exact:true}"><a [routerLink]="['/']"> Home </a></li>
+        <li routerLinkActive= "active" [routerLinkActiveOptions]= "{exact:true}"><a [routerLink]="['/AddMovie']"> Add Movie</a></li>
+        <li routerLinkActive= "active" [routerLinkActiveOptions]= "{exact:true}"><a [routerLink]="['/ListMovie']"> Show Movie List</a></li>
+        <li routerLinkActive= "active" [routerLinkActiveOptions]= "{exact:true}"><a [routerLink]="['/Register']"> Register</a> </li>
+        <li routerLinkActive= "active" [routerLinkActiveOptions]= "{exact:true}"><a [routerLink]="['/Login']"> Login</a> </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- Navigation -->
+<div class="jumbotron">
+  <router-outlet>
+  </router-outlet>
+</div>
+<!-- Main Component Display -->

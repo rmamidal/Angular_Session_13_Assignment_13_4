@@ -1,0 +1,50 @@
+<section id="User">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-lg-offset-3">
+                <div class="form-wrap">
+                    <!-- User Data Submit form-->
+                    <h2>Add User</h2>
+                    <form [formGroup]="formUser" (ngSubmit)="storeUser()" novalidate>
+                        <div class="form-group">
+                            <label> User Name </label>
+                            <input type="text" class="form-control" name="name" formControlName="name" [(ngModel)]="currentUser.name" placeholder="User Name">
+                            <!-- Field Validation-->
+                            <div *ngIf="formUser.controls['name'].errors && (formUser.controls['name'].dirty || formUser.controls['name'].touched)" class="alert alert-danger">
+                                <div [hidden]="!formUser.controls['name'].hasError('required')">
+                                    Name Required
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label> Pass word</label>
+                            <input type="text" class="form-control" [(ngModel)]="currentUser.password" formControlName="password" name="password" placeholder="Password">
+                            <!-- Field Validation-->
+                            <div *ngIf="formUser.controls['password'].errors && (formUser.controls['password'].dirty || formUser.controls['password'].touched)"
+                                class="alert alert-danger">
+                                <div [hidden]="!formUser.controls['password'].hasError('required')">
+                                    Password Required.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label> Email Id </label>
+                            <input type="text" class="form-control" name="emailId" formControlName="emailId" [(ngModel)]="currentUser.emailId"
+                                placeholder="Email Id" required>
+                            <!-- Field Validation-->
+                            <div *ngIf="formUser.controls['emailId'].errors && (formUser.controls['emailId'].dirty || formUser.controls['emailId'].touched)"
+                                class="alert alert-danger">
+                                <div [hidden]="!formUser.controls['emailId'].hasError('required')">
+                                    Email ID Required
+                                </div>
+                            </div>
+                        </div>
+                        <input type="submit" class="btn btn-primary btn-block" value="Add" [disabled]="formUser.invalid">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- User Submission form -->
+    </div>
+</section>
