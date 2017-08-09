@@ -12,7 +12,12 @@ import { UnsavedchangesGuardService } from './AuthGuard/unsavedchanges-guard';
 // Defining path and assigning component to it.
 export const ApplicationRoutes: Routes = [
     { path:'', redirectTo:'/ListMovie', pathMatch:'full'}, /* Default routes*/
-    { path:'AddMovie', component: AddMovieComponent, canActivate: [AuthGuardComponent]},
+    { 
+        path:'AddMovie', component: AddMovieComponent, canActivate: [AuthGuardComponent],
+        data: {
+            pageTitle: "Add a Movie"
+        }
+    },
     { path:'ListMovie', component: ListMovieComponent, canActivate: [AuthGuardComponent]},
     { path: 'DetailsMovie/:id', component: DetailsMovieComponent},
     { path: 'Login', component: LoginComponent},

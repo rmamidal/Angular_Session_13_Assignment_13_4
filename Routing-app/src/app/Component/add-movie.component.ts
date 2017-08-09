@@ -3,7 +3,7 @@ import { Component, Injectable } from "@angular/core"
 import { Movie, IRating } from "../Service/movie"
 import { MovieService, RatingService } from "../Service/movie.service"
 import { FormBuilder, FormGroup, FormControl, Validators} from "@angular/forms"
-import { Router } from "@angular/router"
+import { Router, ActivatedRoute } from "@angular/router"
 
 @Component({
     selector: "movie-add",
@@ -23,9 +23,13 @@ export class AddMovieComponent {
     // Declaring myForm of Type FormGroup
     formMovie: FormGroup;
 
+    // Data from component;
+    pageTitle: string;
+
 
     // Injecting services into constructor. 
-    constructor(private _router: Router, private _movieService: MovieService, private _ratingService: RatingService, private _formBuilder: FormBuilder) {}
+    constructor(private _router: Router, private _movieService: MovieService, 
+    private _ratingService: RatingService, private _formBuilder: FormBuilder, private route: ActivatedRoute) {}
 
     // Initialising  Form Grpup, drop down and movies
     ngOnInit() {
@@ -36,6 +40,10 @@ export class AddMovieComponent {
         'description': ['', Validators.compose([Validators.required])],
         'rating': ['', Validators.compose([Validators.required])],
         'releaseDate': ['', Validators.compose([Validators.required])]
+      });
+
+      this.route.data.forEach((data: any) => {
+          this.pageTitle = data.pageTitle;
       });
 
       this.movieRatings = this._ratingService.getRatings();
